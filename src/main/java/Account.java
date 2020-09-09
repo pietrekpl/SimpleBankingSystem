@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Account {
     private long creditCardNumber;
     private int pinCode;
@@ -28,14 +30,26 @@ public class Account {
         int randomPin = (int)(Math.random()*9000)+1000;
         return randomPin;
     }
-
-    public Account() {
+    public void showInfo(){
         System.out.println("Your card has been created");
         System.out.println("Your card number:");
-        this.creditCardNumber = generateCardNumber();
         System.out.println(this.creditCardNumber);
         System.out.println("Your card PIN:");
-        this.pinCode = generatePIN();
         System.out.println(this.pinCode);
+    }
+    public void logIN(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter your card number");
+        long enteredCardNumb = scanner.nextLong();
+        System.out.println("Enter your PIN:");
+        int enteredPIN = scanner.nextInt();
+        if (enteredCardNumb != this.creditCardNumber || enteredPIN != this.pinCode){
+            System.out.println("Wrong card number or PIN!");
+        }
+    }
+
+    public Account() {
+        this.creditCardNumber = generateCardNumber();
+        this.pinCode = generatePIN();
     }
 }

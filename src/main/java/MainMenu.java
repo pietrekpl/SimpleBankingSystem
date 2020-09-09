@@ -5,15 +5,18 @@ public class MainMenu {
         Scanner scanner = new Scanner(System.in);
         int menuOption = scanner.nextInt();
 
+        Account account = new Account();
         switch (menuOption){
             case 1:
-                Account account = new Account();
+                account.showInfo();
+                break;
             case 2:
-
+                account.logIN();
             case 0:
                 System.out.println("Bye");
                 break;
         }
+
 
 
 
