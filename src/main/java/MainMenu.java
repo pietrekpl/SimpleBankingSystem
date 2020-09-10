@@ -3,12 +3,12 @@ import java.util.Scanner;
 public class MainMenu {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int menuOption ;
+        int menuOption;
 
         Account account = new Account();
         do {
             menuOption = scanner.nextInt();
-            switch (menuOption){
+            switch (menuOption) {
                 case 1:
                     account.showInfo();
                     break;
@@ -19,10 +19,7 @@ public class MainMenu {
                     System.out.println("Bye");
                     break;
             }
-        }while (menuOption != 0);
-
-
-
+        } while (menuOption != 0);
 
 
     }
