@@ -1,15 +1,18 @@
+import java.util.Random;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Account {
-    private long creditCardNumber;
+    private final Random random = new Random(System.currentTimeMillis());
+    private String creditCardNumber;
     private int pinCode;
 
-    public long getCreditCardNumber() {
+
+    public String getCreditCardNumber() {
         return creditCardNumber;
     }
 
-    public void setCreditCardNumber(long creditCardNumber) {
+    public void setCreditCardNumber(String creditCardNumber) {
         this.creditCardNumber = creditCardNumber;
     }
 
@@ -20,12 +23,43 @@ public class Account {
     public void setPinCode(int pinCode) {
         this.pinCode = pinCode;
     }
+    /* Assume our credit card's prefix should be 400000 and credit card's length as usually 16 */
+    public String generate(String prefix, int length) {
+        Random random = new Random(System.currentTimeMillis());
+        int randomNumberLength = length - (prefix.length() + 1);
+        StringBuilder builder = new StringBuilder(prefix);
+        for (int i = 0; i < randomNumberLength; i++) {
+            int digit = this.random.nextInt(10);
+            builder.append(digit);
+        }
+        int checkDigit = this.getCheckDigit(builder.toString());
+        builder.append(checkDigit);
+        return builder.toString();
+    }
+    // Luhn algorithm to check credit card validation
+    private int getCheckDigit(String number) {
+        int sum = 0;
+        for (int i = 0; i < number.length(); i++) {
+            int digit = Integer.parseInt(number.substring(i, (i + 1)));
 
-    public long generateCardNumber() {
-        long min = 400_000_00000_00000L;
-        long max = 400_000_99999_99999L;
-        long cardNumber = ThreadLocalRandom.current().nextLong(min, max + 1);
-        return cardNumber;
+            if ((i % 2) == 0) {
+                digit = digit * 2;
+                if (digit > 9) {
+                    digit = (digit / 10) + (digit % 10);
+                }
+            }
+            sum += digit;
+        }
+        int mod = sum % 10;
+        return ((mod == 0) ? 0 : 10 - mod);
+    }
+    public String cardValidate(){
+
+        if (getCheckDigit(this.creditCardNumber) == 0){
+            return "Credit card number is valid";
+        }
+        return "Credit card number is Invalid";
+
     }
 
     public int generatePIN() {
@@ -44,16 +78,17 @@ public class Account {
     public void logIN() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter your card number");
-        long enteredCardNumb = scanner.nextLong();
+        String enteredCardNumb = scanner.nextLine();
         System.out.println("Enter your PIN:");
         int enteredPIN = scanner.nextInt();
-        if (enteredCardNumb != this.creditCardNumber || enteredPIN != this.pinCode) {
+        if (!enteredCardNumb.equals(this.creditCardNumber) || enteredPIN != this.pinCode) {
             System.out.println("Wrong card number or PIN!");
         }
     }
 
+
     public Account() {
-        this.creditCardNumber = generateCardNumber();
+        this.creditCardNumber = generate("400000",16);
         this.pinCode = generatePIN();
     }
 }

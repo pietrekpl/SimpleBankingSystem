@@ -15,6 +15,9 @@ public class MainMenu {
                 case 2:
                     account.logIN();
                     break;
+                case 3:
+                    System.out.println(account.cardValidate());
+                    break;
                 case 0:
                     System.out.println("Bye");
                     break;

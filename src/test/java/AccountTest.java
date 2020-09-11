@@ -12,11 +12,10 @@ class AccountTest {
         Account account = new Account();
 
         //when
-        account.generateCardNumber();
-        String creditCardLength = String.valueOf(account.generateCardNumber());
+        account.generate("400000",16);
 
         //then
-        assertEquals(16, creditCardLength.length());
+        assertEquals(16,account.getCreditCardNumber().length());
     }
 
     @Test
@@ -26,10 +25,10 @@ class AccountTest {
         Account account = new Account();
 
         //when
-        String prefix = String.valueOf(account.getCreditCardNumber()).substring(0, 6);
+        String prefix = account.getCreditCardNumber().substring(0, 6);
 
         //then
-        assertEquals(400000, Long.parseLong(prefix));
+        assertEquals("400000",prefix);
     }
 
     @Test
@@ -44,6 +43,18 @@ class AccountTest {
 
         //then
         assertEquals(4, pinCodeLength.length());
+    }
+    @Test
+    public void shouldPassCardValidate(){
+
+        //given
+        Account account = new Account();
+
+        //when
+        account.cardValidate();
+
+        //then
+        assertEquals("Credit card number is valid",account.cardValidate());
     }
 
 
