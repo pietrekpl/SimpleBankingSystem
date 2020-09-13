@@ -2,15 +2,15 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 public class Transaction {
-    private long accountNumber;
+    private String accountNumber;
     private BigDecimal value;
     private LocalDateTime transactionDateAndTime;
 
-    public long getAccountNumber() {
+    public String getAccountNumber() {
         return accountNumber;
     }
 
-    public void setAccountNumber(long accountNumber) {
+    public void setAccountNumber(String accountNumber) {
         this.accountNumber = accountNumber;
     }
 
@@ -39,9 +39,5 @@ public class Transaction {
                 '}';
     }
 
-    public Transaction(long accountNumber, BigDecimal value, LocalDateTime transactionDateAndTime) {
-        this.accountNumber = accountNumber;
-        this.value = value;
-        this.transactionDateAndTime = transactionDateAndTime;
-    }
+
 }

@@ -5,18 +5,18 @@ public class MainMenu {
         Scanner scanner = new Scanner(System.in);
         int menuOption;
 
-        Account account = new Account();
+        CreditCard creditCard = new CreditCard();
         do {
             menuOption = scanner.nextInt();
             switch (menuOption) {
                 case 1:
-                    account.showInfo();
+                    creditCard.showInfo();
                     break;
                 case 2:
-                    account.logIN();
+                    creditCard.logIN();
                     break;
                 case 3:
-                    System.out.println(account.cardValidate());
+                    System.out.println(creditCard.cardValidate());
                     break;
                 case 0:
                     System.out.println("Bye");

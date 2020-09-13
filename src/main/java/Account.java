@@ -1,16 +1,23 @@
+import org.iban4j.CountryCode;
+import org.iban4j.Iban;
+
 import java.math.BigDecimal;
 
 public class Account {
-    private long accountNumber;
+    private final BigDecimal STARTMONEY = BigDecimal.valueOf(200);
+
+
+    private String accountNumber;
     private Owner owner;
-    private BigDecimal moneyAvailible;
+    private BigDecimal balance;
     private boolean isActive;
 
-    public long getAccountNumber() {
+
+    public String getAccountNumber() {
         return accountNumber;
     }
 
-    public void setAccountNumber(long accountNumber) {
+    public void setAccountNumber(String accountNumber) {
         this.accountNumber = accountNumber;
     }
 
@@ -22,12 +29,12 @@ public class Account {
         this.owner = owner;
     }
 
-    public BigDecimal getMoneyAvailible() {
-        return moneyAvailible;
+    public BigDecimal getBalance() {
+        return balance;
     }
 
-    public void setMoneyAvailible(BigDecimal moneyAvailible) {
-        this.moneyAvailible = moneyAvailible;
+    public void setBalance(BigDecimal balance) {
+        this.balance = balance;
     }
 
     public boolean isActive() {
@@ -38,21 +45,36 @@ public class Account {
         isActive = active;
     }
 
+    long number = (long) Math.floor(Math.random() * 9_000_000_000L) + 1_000_000_000L;
+
     @Override
     public String toString() {
         return "Account{" +
                 "accountNumber=" + accountNumber +
                 ", owner=" + owner +
-                ", moneyAvailible=" + moneyAvailible +
+                ", moneyAvailible=" + balance +
                 ", isActive=" + isActive +
                 '}';
     }
 
-    public Account(long accountNumber, Owner owner, BigDecimal moneyAvailible, boolean isActive) {
-        this.accountNumber = accountNumber;
-        this.owner = owner;
-        this.moneyAvailible = moneyAvailible;
-        this.isActive = isActive;
-    }
 
+    Iban iban = new Iban.Builder()
+            .countryCode(CountryCode.PL)
+            .bankCode("400000")
+            .accountNumber(String.valueOf(number))
+            .build();
+    Iban val = Iban.valueOf(iban.toString());
+
+    Owner owner1 = new Owner("Piotr","L","Warszawa Katowicka 1");
+
+
+    public Account() {
+        this.owner = owner1;
+        System.out.println("Hello "+owner.getFirstName());
+        this.accountNumber = val.toString();
+        System.out.println("Account number : "+this.accountNumber);
+        this.balance = STARTMONEY;
+        System.out.println("Balance : "+ this.balance);
+
+    }
 }

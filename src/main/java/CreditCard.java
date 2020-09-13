@@ -83,6 +83,8 @@ public class CreditCard {
         int enteredPIN = scanner.nextInt();
         if (!enteredCardNumb.equals(this.creditCardNumber) || enteredPIN != this.pinCode) {
             System.out.println("Wrong card number or PIN!");
+        }else {
+            Account account = new Account();
         }
     }
 
