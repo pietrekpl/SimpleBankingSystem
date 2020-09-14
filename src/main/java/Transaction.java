@@ -1,16 +1,18 @@
+import org.iban4j.Iban;
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 public class Transaction {
-    private String accountNumber;
+    private Iban accountNumber;
     private BigDecimal value;
     private LocalDateTime transactionDateAndTime;
 
-    public String getAccountNumber() {
+    public Iban getAccountNumber() {
         return accountNumber;
     }
 
-    public void setAccountNumber(String accountNumber) {
+    public void setAccountNumber(Iban accountNumber) {
         this.accountNumber = accountNumber;
     }
 
