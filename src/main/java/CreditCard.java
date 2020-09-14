@@ -23,6 +23,7 @@ public class CreditCard {
     public void setPinCode(int pinCode) {
         this.pinCode = pinCode;
     }
+
     /* Assume our credit card's prefix should be 400000 and credit card's length as usually 16 */
     public String generate(String prefix, int length) {
         Random random = new Random(System.currentTimeMillis());
@@ -36,6 +37,7 @@ public class CreditCard {
         builder.append(checkDigit);
         return builder.toString();
     }
+
     // Luhn algorithm to check credit card validation
     private int getCheckDigit(String number) {
         int sum = 0;
@@ -53,9 +55,10 @@ public class CreditCard {
         int mod = sum % 10;
         return ((mod == 0) ? 0 : 10 - mod);
     }
-    public String cardValidate(){
 
-        if (getCheckDigit(this.creditCardNumber) == 0){
+    public String cardValidate() {
+
+        if (getCheckDigit(this.creditCardNumber) == 0) {
             return "Credit card number is valid";
         }
         return "Credit card number is Invalid";
@@ -83,14 +86,14 @@ public class CreditCard {
         int enteredPIN = scanner.nextInt();
         if (!enteredCardNumb.equals(this.creditCardNumber) || enteredPIN != this.pinCode) {
             System.out.println("Wrong card number or PIN!");
-        }else {
+        } else {
             Account account = new Account();
         }
     }
 
 
     public CreditCard() {
-        this.creditCardNumber = generate("400000",16);
+        this.creditCardNumber = generate("400000", 16);
         this.pinCode = generatePIN();
     }
 }

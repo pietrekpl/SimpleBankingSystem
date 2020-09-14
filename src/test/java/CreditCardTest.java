@@ -12,7 +12,7 @@ class CreditCardTest {
         CreditCard creditCard = new CreditCard();
 
         //when
-        creditCard.generate("400000",16);
+        creditCard.generate("400000", 16);
 
         //then
         assertEquals(16, creditCard.getCreditCardNumber().length());
@@ -28,7 +28,7 @@ class CreditCardTest {
         String prefix = creditCard.getCreditCardNumber().substring(0, 6);
 
         //then
-        assertEquals("400000",prefix);
+        assertEquals("400000", prefix);
     }
 
     @Test
@@ -44,8 +44,9 @@ class CreditCardTest {
         //then
         assertEquals(4, pinCodeLength.length());
     }
+
     @Test
-    public void shouldPassCardValidate(){
+    public void shouldPassCardValidate() {
 
         //given
         CreditCard creditCard = new CreditCard();

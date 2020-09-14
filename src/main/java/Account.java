@@ -63,16 +63,16 @@ public class Account {
             .bankCode("400")
             .buildRandom();
 
-    Owner owner1 = new Owner("Piotr","L","Warszawa Katowicka 1");
+    Owner owner1 = new Owner("Piotr", "L", "Warszawa Katowicka 1");
 
 
     public Account() {
         this.owner = owner1;
-        System.out.println("Hello, "+owner.getFirstName());
+        System.out.println("Hello, " + owner.getFirstName());
         this.accountNumber = iban;
-        System.out.println("Account number : "+this.accountNumber);
+        System.out.println("Account number : " + this.accountNumber);
         this.balance = STARTMONEY;
-        System.out.println("Balance : "+ this.balance);
+        System.out.println("Balance : " + this.balance);
 
     }
 }
