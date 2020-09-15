@@ -17,4 +17,17 @@ class AccountTest {
         //then
         assertEquals(200, value.longValueExact());
     }
+    @Test
+    public void shouldAddAmountToBalance(){
+        //given
+        Account account = new Account();
+        BigDecimal value = BigDecimal.valueOf(0.99);
+
+        //when
+       BigDecimal result =  account.addAmount(value);
+
+        //then
+        assertEquals(BigDecimal.valueOf(200.99),result);
+        System.out.println(account.getBalance());
+    }
 }

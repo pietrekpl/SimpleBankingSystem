@@ -56,6 +56,10 @@ public class Account {
                 ", isActive=" + isActive +
                 '}';
     }
+    public BigDecimal addAmount(BigDecimal amount){
+       this.balance = balance.add(amount);
+       return this.balance;
+    }
 
 
     Iban iban = new Iban.Builder()
