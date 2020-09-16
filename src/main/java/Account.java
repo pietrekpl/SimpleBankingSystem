@@ -2,6 +2,7 @@ import org.iban4j.CountryCode;
 import org.iban4j.Iban;
 
 import java.math.BigDecimal;
+import java.util.Scanner;
 
 public class Account {
     private final BigDecimal STARTMONEY = BigDecimal.valueOf(200);
@@ -56,6 +57,30 @@ public class Account {
                 ", isActive=" + isActive +
                 '}';
     }
+    public  void mainMenu(){
+        Scanner scanner = new Scanner(System.in);
+        int actionNumber;
+
+        do {
+            actionNumber = scanner.nextInt();
+            switch (actionNumber){
+                case 1:
+                    //to implement
+                    break;
+                case 2:
+                    //to implement
+                    break;
+                case 3:
+                    //to implement
+                    break;
+            }
+        }while (actionNumber != 0);
+
+
+
+
+    }
+
     public BigDecimal addAmount(BigDecimal amount){
        this.balance = balance.add(amount);
        return this.balance;
