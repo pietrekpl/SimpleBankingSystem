@@ -8,6 +8,12 @@ public class MainMenu {
         CreditCard creditCard = new CreditCard();
         Account account = new Account();
 
+
+        System.out.println("Press 1 to see your credit card credentials");
+        System.out.println("Press 2 to login using credit card credentials");
+        System.out.println("Press 3 to validate credit card");
+        System.out.println("Press 4 to see moore details about your account");
+        System.out.println("Press 0 to exit application");
         external:
         do {
             menuOption = scanner.nextInt();
@@ -24,10 +30,10 @@ public class MainMenu {
                 case 4:
                     account.showInfo();
                     account.mainMenu();
-                    break ;
+                    break;
                 case 0:
                     System.out.println("Bye");
-                   break external;
+                    break external;
             }
         } while (menuOption != 0);
 

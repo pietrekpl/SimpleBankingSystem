@@ -57,18 +57,22 @@ public class Account {
                 ", isActive=" + isActive +
                 '}';
     }
-    public  void mainMenu(){
+
+    public void mainMenu() {
         Scanner scanner = new Scanner(System.in);
         int actionNumber;
 
+        System.out.println("Press 1 to add money to your account");
+        System.out.println("Press 2 to see your current balance");
+        System.out.println("Press 0 to exit account module");
         do {
             actionNumber = scanner.nextInt();
-            switch (actionNumber){
+            switch (actionNumber) {
                 case 1:
-                    //to implement
+                    addAmount();
                     break;
                 case 2:
-                    //to implement
+                    System.out.println(getBalance());
                     break;
                 case 3:
                     //to implement
@@ -77,14 +81,18 @@ public class Account {
                     System.out.println("Exit");
                     break;
             }
-        }while (actionNumber != 0);
+        } while (actionNumber != 0);
     }
 
-    public BigDecimal addAmount(BigDecimal amount){
-       this.balance = balance.add(amount);
-       return this.balance;
+    public BigDecimal addAmount() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter amount of money to add");
+        BigDecimal amount = scanner.nextBigDecimal();
+        this.balance = balance.add(amount);
+        return this.balance;
     }
-    public void showInfo(){
+
+    public void showInfo() {
         System.out.println("Hello, " + owner.getFirstName());
         System.out.println("Account number : " + this.accountNumber);
         System.out.println("Balance : " + this.balance);
