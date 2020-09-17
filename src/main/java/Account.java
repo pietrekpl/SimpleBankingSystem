@@ -73,17 +73,21 @@ public class Account {
                 case 3:
                     //to implement
                     break;
+                case 0:
+                    System.out.println("Exit");
+                    break;
             }
         }while (actionNumber != 0);
-
-
-
-
     }
 
     public BigDecimal addAmount(BigDecimal amount){
        this.balance = balance.add(amount);
        return this.balance;
+    }
+    public void showInfo(){
+        System.out.println("Hello, " + owner.getFirstName());
+        System.out.println("Account number : " + this.accountNumber);
+        System.out.println("Balance : " + this.balance);
     }
 
 
@@ -97,11 +101,9 @@ public class Account {
 
     public Account() {
         this.owner = owner1;
-        System.out.println("Hello, " + owner.getFirstName());
         this.accountNumber = iban;
-        System.out.println("Account number : " + this.accountNumber);
         this.balance = STARTMONEY;
-        System.out.println("Balance : " + this.balance);
+
 
     }
 }

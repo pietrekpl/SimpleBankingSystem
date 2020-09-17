@@ -6,6 +6,9 @@ public class MainMenu {
         int menuOption;
 
         CreditCard creditCard = new CreditCard();
+        Account account = new Account();
+
+        external:
         do {
             menuOption = scanner.nextInt();
             switch (menuOption) {
@@ -18,9 +21,13 @@ public class MainMenu {
                 case 3:
                     System.out.println(creditCard.cardValidate());
                     break;
+                case 4:
+                    account.showInfo();
+                    account.mainMenu();
+                    break ;
                 case 0:
                     System.out.println("Bye");
-                    break;
+                   break external;
             }
         } while (menuOption != 0);
 
