@@ -8,6 +8,7 @@ public class MainMenu {
         CreditCard creditCard = new CreditCard();
         Account account = new Account();
         Mortgage mortgage = new Mortgage();
+        Transaction transaction = new Transaction();
 
 
         System.out.println("Press 1 to see your credit card credentials");
@@ -34,6 +35,9 @@ public class MainMenu {
                     break;
                 case 5:
                     mortgage.makeMortgage();
+                    break;
+                case 6:
+                    transaction.makeTransaction();
                 case 0:
                     System.out.println("Bye");
                     break external;

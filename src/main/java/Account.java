@@ -10,7 +10,7 @@ public class Account {
 
     private Iban accountNumber;
     private Owner owner;
-    private BigDecimal balance;
+    private BigDecimal balance = STARTMONEY;
     private boolean isActive;
 
 

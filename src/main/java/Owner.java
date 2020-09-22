@@ -1,6 +1,11 @@
+import javax.validation.constraints.NotBlank;
+
 public class Owner {
+    @NotBlank
     private String firstName;
+    @NotBlank
     private String lastName;
+    @NotBlank
     private String Address;
 
     public String getFirstName() {
