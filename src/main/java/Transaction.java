@@ -7,19 +7,14 @@ import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class Transaction {
+
+    Account account = new Account();
     private Iban accountNumber;
     private Owner owner;
-    private Account account;
     private BigDecimal value;
     private LocalDate transactionDateAndTime;
 
-    public Account getAccount() {
-        return account;
-    }
 
-    public void setAccount(Account account) {
-        this.account = account;
-    }
 
     public Iban getAccountNumber() {
         return accountNumber;
@@ -87,18 +82,24 @@ public class Transaction {
         System.out.println("Enter address of your contact");
         String adress = scanner.nextLine();
         Owner owner = new Owner(firstName,lastName,adress);
-        System.out.println("Enter date of transfer");
+        System.out.println("Enter date of transfer with formar DD/MM/YYYY");
         String date = scanner.nextLine();
         DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate ld = LocalDate.parse(date,dateFormat);
         System.out.println("Enter a value which you like to transfer");
         BigDecimal value  = scanner.nextBigDecimal();
         Transaction transaction = new Transaction(iban,owner,value,ld);
-        Account account = new Account();
-        if (account.getBalance().doubleValue() < value.doubleValue()){
+
+        if (this.account.getBalance().intValue() < value.intValue()){
             succesfullTransaction= false;
         }else {
-            account.getBalance().subtract(value);
+          account.setBalance(this.account.getBalance().subtract(value));
+        }
+        if (succesfullTransaction){
+            System.out.println("Transaction has been made");
+            System.out.println("Money value on account "+this.account.getBalance());
+        }else {
+            System.out.println("There was an error while making transaction");
         }
 
 

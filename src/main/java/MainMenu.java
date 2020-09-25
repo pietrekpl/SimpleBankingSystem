@@ -2,7 +2,9 @@ import java.util.Scanner;
 
 public class MainMenu {
     public static void main(String[] args) {
+
         Scanner scanner = new Scanner(System.in);
+
         int menuOption;
 
         CreditCard creditCard = new CreditCard();
@@ -15,6 +17,8 @@ public class MainMenu {
         System.out.println("Press 2 to login using credit card credentials");
         System.out.println("Press 3 to validate credit card");
         System.out.println("Press 4 to see moore details about your account");
+        System.out.println("Press 5 to make a mortgage");
+        System.out.println("Press 6 make a transfer");
         System.out.println("Press 0 to exit application");
         external:
         do {
@@ -38,6 +42,7 @@ public class MainMenu {
                     break;
                 case 6:
                     transaction.makeTransaction();
+                    break;
                 case 0:
                     System.out.println("Bye");
                     break external;
