@@ -10,7 +10,7 @@ public class MainMenu {
         CreditCard creditCard = new CreditCard();
         Account account = new Account();
         Mortgage mortgage = new Mortgage();
-        Transaction transaction = new Transaction();
+        Transaction transaction = new Transaction(account);
 
 
         System.out.println("Press 1 to see your credit card credentials");

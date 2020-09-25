@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class Transaction {
 
-    Account account = new Account();
+    private Account account = new Account();
     private Iban accountNumber;
     private Owner owner;
     private BigDecimal value;
@@ -60,6 +60,10 @@ public class Transaction {
                 '}';
     }
 
+    public Transaction(Account account) {
+        this.account = account;
+    }
+
     public Transaction(Iban accountNumber, Owner owner, BigDecimal value, LocalDate transactionDateAndTime) {
         this.accountNumber = accountNumber;
         this.owner = owner;
@@ -88,7 +92,7 @@ public class Transaction {
         LocalDate ld = LocalDate.parse(date,dateFormat);
         System.out.println("Enter a value which you like to transfer");
         BigDecimal value  = scanner.nextBigDecimal();
-        Transaction transaction = new Transaction(iban,owner,value,ld);
+        Transaction transaction = new Transaction(account);
 
         if (this.account.getBalance().intValue() < value.intValue()){
             succesfullTransaction= false;
