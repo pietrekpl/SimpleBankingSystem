@@ -20,6 +20,7 @@ public class MainMenu {
         System.out.println("Press 5 to make a mortgage");
         System.out.println("Press 6 make a transfer");
         System.out.println("Press 0 to exit application");
+
         external:
         do {
             menuOption = scanner.nextInt();

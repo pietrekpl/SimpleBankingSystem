@@ -7,6 +7,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class Transaction {
+    private static final LocalDate NOW = LocalDate.now();
 
     private Account account = new Account();
     private Iban accountNumber;
@@ -86,10 +87,14 @@ public class Transaction {
         System.out.println("Enter address of your contact");
         String adress = scanner.nextLine();
         Owner owner = new Owner(firstName,lastName,adress);
-        System.out.println("Enter date of transfer with formar DD/MM/YYYY");
+        System.out.println("Enter date of transfer with format DD/MM/YYYY");
         String date = scanner.nextLine();
         DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        LocalDate ld = LocalDate.parse(date,dateFormat);
+        LocalDate localDate = LocalDate.parse(date,dateFormat);
+        if (localDate.isBefore(NOW)){
+            System.out.println("You cannot do a time backward transaction");
+            succesfullTransaction = false;
+        }
         System.out.println("Enter a value which you like to transfer");
         BigDecimal value  = scanner.nextBigDecimal();
         Transaction transaction = new Transaction(account);
