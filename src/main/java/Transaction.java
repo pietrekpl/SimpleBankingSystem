@@ -99,10 +99,10 @@ public class Transaction {
         BigDecimal value  = scanner.nextBigDecimal();
         Transaction transaction = new Transaction(account);
 
-        if (this.account.getBalance().intValue() < value.intValue()){
+        if (account.getBalance().intValue() < value.intValue()){
             succesfullTransaction= false;
         }else {
-          account.setBalance(this.account.getBalance().subtract(value));
+          account.setBalance(account.getBalance().subtract(value));
         }
         if (succesfullTransaction){
             System.out.println("Transaction has been made");
