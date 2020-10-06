@@ -4,17 +4,19 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Transaction {
     private static final LocalDate NOW = LocalDate.now();
+    public static final List<Transaction> transactionList = new ArrayList<>();
 
     private Account account = new Account();
     private Iban accountNumber;
     private Owner owner;
     private BigDecimal value;
     private LocalDate transactionDateAndTime;
-
 
 
     public Iban getAccountNumber() {
@@ -75,7 +77,8 @@ public class Transaction {
     public Transaction() {
     }
 
-    public  void makeTransaction() {
+
+    public void makeTransaction() {
         boolean succesfullTransaction = true;
         System.out.println("Preparing new Transaction");
         Scanner scanner = new Scanner(System.in);
@@ -86,33 +89,43 @@ public class Transaction {
         String lastName = scanner.nextLine();
         System.out.println("Enter address of your contact");
         String adress = scanner.nextLine();
-        Owner owner = new Owner(firstName,lastName,adress);
+        Owner owner = new Owner(firstName, lastName, adress);
         System.out.println("Enter date of transfer with format DD/MM/YYYY");
         String date = scanner.nextLine();
         DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        LocalDate localDate = LocalDate.parse(date,dateFormat);
-        if (localDate.isBefore(NOW)){
+        LocalDate localDate = LocalDate.parse(date, dateFormat);
+        if (localDate.isBefore(NOW)) {
             System.out.println("You cannot do a time backward transaction");
             succesfullTransaction = false;
         }
         System.out.println("Enter a value which you like to transfer");
-        BigDecimal value  = scanner.nextBigDecimal();
+        BigDecimal value = scanner.nextBigDecimal();
         Transaction transaction = new Transaction(account);
 
-        if (account.getBalance().intValue() < value.intValue()){
-            succesfullTransaction= false;
-        }else {
-          account.setBalance(account.getBalance().subtract(value));
+        if (account.getBalance().intValue() < value.intValue()) {
+            succesfullTransaction = false;
+        } else {
+            account.setBalance(account.getBalance().subtract(value));
         }
-        if (succesfullTransaction){
+        if (succesfullTransaction) {
             System.out.println("Transaction has been made");
-            System.out.println("Money value on account "+this.account.getBalance());
-        }else {
+            System.out.println("Money value on account " + this.account.getBalance());
+            transactionList.add(transaction);
+        } else {
             System.out.println("There was an error while making transaction");
         }
 
 
+    }
 
+    public void showTransactions() {
+        if (transactionList.isEmpty()) {
+            System.out.println("No transactions so far");
+        } else {
+            for (Transaction transaction : transactionList) {
+                System.out.println(transaction);
+            }
+        }
     }
 
 }

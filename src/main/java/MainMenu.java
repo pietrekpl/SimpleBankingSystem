@@ -44,6 +44,9 @@ public class MainMenu {
                 case 6:
                     transaction.makeTransaction();
                     break;
+                case 7:
+                    transaction.showTransactions();
+                    break;
                 case 0:
                     System.out.println("Bye");
                     break external;
