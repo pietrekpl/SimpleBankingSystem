@@ -104,15 +104,15 @@ public class Transaction {
 
         if (account.getBalance().intValue() < value.intValue()) {
             succesfullTransaction = false;
-        } else {
-            account.setBalance(account.getBalance().subtract(value));
         }
         if (succesfullTransaction) {
+            account.setBalance(account.getBalance().subtract(value));
             System.out.println("Transaction has been made");
             System.out.println("Money value on account " + this.account.getBalance());
             transactionList.add(transaction);
         } else {
             System.out.println("There was an error while making transaction");
+            System.out.println("Money value on account " + this.account.getBalance());
         }
 
 
