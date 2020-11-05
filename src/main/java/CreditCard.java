@@ -76,6 +76,19 @@ public class CreditCard {
         System.out.println(this.creditCardNumber);
         System.out.println("Your card PIN:");
         System.out.println(this.pinCode);
+
+
+    }
+
+    public void changePin() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Please enter new Pin with 4 digit number");
+        String newPin = scanner.nextLine();
+        while (newPin.length() != 4) {
+            System.out.println("Pin must be 4 digit length");
+        }
+        this.pinCode = Integer.parseInt(newPin);
+        System.out.println("Your new Pin is " + this.pinCode);
     }
 
     public void logIN() {
