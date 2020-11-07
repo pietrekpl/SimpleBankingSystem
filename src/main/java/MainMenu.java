@@ -12,6 +12,8 @@ public class MainMenu {
         Mortgage mortgage = new Mortgage();
         Transaction transaction = new Transaction(account);
 
+        creditCard.restrictCard();
+
 
         System.out.println("Press 1 to see your credit card credentials");
         System.out.println("Press 2 to login using credit card credentials");

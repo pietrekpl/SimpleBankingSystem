@@ -1,3 +1,6 @@
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
@@ -78,6 +81,14 @@ public class CreditCard {
         System.out.println(this.pinCode);
 
 
+    }
+
+    public void restrictCard() {
+        System.out.println("Credit card with following number: \n" + creditCardNumber + " has been restricted");
+        LocalDateTime localDateTime = LocalDateTime.now();
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+        String formatedDateTime = localDateTime.format(timeFormatter);
+        System.out.println("Since " + formatedDateTime + " credit card is marked as inactive");
     }
 
     public void changePin() {
