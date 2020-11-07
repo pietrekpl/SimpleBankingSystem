@@ -64,6 +64,7 @@ public class Account {
 
         System.out.println("Press 1 to add money to your account");
         System.out.println("Press 2 to see your current balance");
+        System.out.println("Press 3 to deactivate account");
         System.out.println("Press 0 to exit account module");
         do {
             actionNumber = scanner.nextInt();
@@ -75,13 +76,18 @@ public class Account {
                     System.out.println(getBalance());
                     break;
                 case 3:
-                    //to implement
+                    deactivateAccount();
                     break;
                 case 0:
                     System.out.println("Exit");
                     break;
             }
         } while (actionNumber != 0);
+    }
+
+    public void deactivateAccount() {
+        this.isActive = false;
+        System.out.println("Your account has been deactivated.");
     }
 
     public BigDecimal addAmount() {

@@ -15,7 +15,7 @@ public class Mortgage extends Credit {
         BigDecimal propertyValue = scanner.nextBigDecimal();
         System.out.println("Our bank requires own resources with the Value of the 20% of the property final Value.");
         System.out.println("So, have you " + propertyValue.multiply(OWN_RESOURCE_RATIO) + "zł of your own resources ?");
-        System.out.println("yes"+"\\"+"no");
+        System.out.println("yes" + "\\" + "no");
         String answer = scanner.next();
         if (answer.toLowerCase().equals("no")) {
             System.out.println("Sorry, we cannot grant you a mortgage");
@@ -33,11 +33,11 @@ public class Mortgage extends Credit {
         BigDecimal totalMortgageCost = propertyValue.multiply(MORTGAGE_RATIO);
         BigDecimal proposalOfMonthlyPayment = (totalMortgageCost.divide(years, RoundingMode.HALF_UP)
                 .divide(MONTHS, RoundingMode.HALF_UP));
-        if (proposalOfMonthlyPayment.doubleValue() <= availible.doubleValue()){
+        if (proposalOfMonthlyPayment.doubleValue() <= availible.doubleValue()) {
             System.out.println("We can grant you a mortgage");
-        }else {
+        } else {
             System.out.println("Sorry, we cannot grant you a credit");
-            System.out.println("Reason : Proposal of monthly mortgage payment "+proposalOfMonthlyPayment + " is higher than your monthly resources : "+ availible);
+            System.out.println("Reason : Proposal of monthly mortgage payment " + proposalOfMonthlyPayment + " is higher than your monthly resources : " + availible);
         }
     }
 }

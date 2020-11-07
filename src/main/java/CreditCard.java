@@ -10,6 +10,11 @@ public class CreditCard {
     private String creditCardNumber;
     private int pinCode;
 
+    public CreditCard() {
+        this.creditCardNumber = generate("400000", 16);
+        this.pinCode = generatePIN();
+    }
+
 
     public String getCreditCardNumber() {
         return creditCardNumber;
@@ -115,9 +120,4 @@ public class CreditCard {
         }
     }
 
-
-    public CreditCard() {
-        this.creditCardNumber = generate("400000", 16);
-        this.pinCode = generatePIN();
-    }
 }
